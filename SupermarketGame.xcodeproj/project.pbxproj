@@ -15,6 +15,7 @@
 		640418FF21CE842E008825B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 640418FD21CE842E008825B1 /* Main.storyboard */; };
 		6404190121CE842F008825B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6404190021CE842F008825B1 /* Assets.xcassets */; };
 		6404190421CE842F008825B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6404190221CE842F008825B1 /* LaunchScreen.storyboard */; };
+		6404190C21CE8690008825B1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6404190B21CE8690008825B1 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		6404190021CE842F008825B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6404190321CE842F008825B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6404190521CE842F008825B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6404190B21CE8690008825B1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				640418F521CE842E008825B1 /* GameScene.sks */,
 				640418F721CE842E008825B1 /* Actions.sks */,
 				640418F921CE842E008825B1 /* GameScene.swift */,
+				6404190B21CE8690008825B1 /* Player.swift */,
 				640418FB21CE842E008825B1 /* GameViewController.swift */,
 				640418FD21CE842E008825B1 /* Main.storyboard */,
 				6404190021CE842F008825B1 /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6404190C21CE8690008825B1 /* Player.swift in Sources */,
 				640418FA21CE842E008825B1 /* GameScene.swift in Sources */,
 				640418FC21CE842E008825B1 /* GameViewController.swift in Sources */,
 				640418F421CE842E008825B1 /* AppDelegate.swift in Sources */,
@@ -295,6 +299,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DC67S5G985;
 				INFOPLIST_FILE = SupermarketGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -312,6 +317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DC67S5G985;
 				INFOPLIST_FILE = SupermarketGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
