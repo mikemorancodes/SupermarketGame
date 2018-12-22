@@ -30,7 +30,7 @@ class Player:SKNode {
     override init() {
         super.init()
         
-        objectSprite = SKSpriteNode(imageNamed: "trolley")
+        objectSprite = SKSpriteNode(imageNamed: "trolley_front")
         print("player created!")
         addChild(objectSprite!)
     }
