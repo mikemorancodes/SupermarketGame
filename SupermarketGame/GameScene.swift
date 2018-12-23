@@ -12,7 +12,7 @@ import GameplayKit
 class GameScene: SKScene {
     
     var playerLocation:CGPoint = CGPoint(x:0,y:0)
-    var currentSpeed:Float = 5.0
+    var currentSpeed:Float = 2.0
     var supermarketWorld:SKNode?
     var player:Player?
     
@@ -25,6 +25,8 @@ class GameScene: SKScene {
         player!.position = playerLocation
         supermarketWorld!.addChild(player!)
         player!.currentSpeed = currentSpeed
+        
+        addGestureRecognizers(view: view)
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -39,23 +41,41 @@ class GameScene: SKScene {
         
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    func addGestureRecognizers(view: SKView) {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.handleSwipe))
+        swipeRight.direction = .right
+        view.addGestureRecognizer(swipeRight)
         
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.handleSwipe))
+        swipeLeft.direction = .left
+        view.addGestureRecognizer(swipeLeft)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.handleSwipe))
+        swipeDown.direction = .down
+        view.addGestureRecognizer(swipeDown)
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.handleSwipe))
+        swipeUp.direction = .up
+        view.addGestureRecognizer(swipeUp)
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+    @objc func handleSwipe(gesture: UIGestureRecognizer) {
+        //add gestures
+        let swipeGesture = gesture as? UISwipeGestureRecognizer
+        
+        switch swipeGesture!.direction {
+        case UISwipeGestureRecognizer.Direction.right:
+            player!.goRight()
+        case UISwipeGestureRecognizer.Direction.left:
+            player!.goLeft()
+        case UISwipeGestureRecognizer.Direction.up:
+            player!.goUp()
+        case UISwipeGestureRecognizer.Direction.down:
+            player!.goDown()
+        default:
+            break
+        }
     }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered

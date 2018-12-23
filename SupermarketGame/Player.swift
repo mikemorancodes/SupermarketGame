@@ -21,7 +21,7 @@ class Player:SKNode {
     
     var objectSprite:SKSpriteNode?
     var currentSpeed:Float = 5.0
-    var currentDirection = Direction.up
+    var currentDirection = Direction.none
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init:coder has not been implemented")
@@ -31,7 +31,6 @@ class Player:SKNode {
         super.init()
         
         objectSprite = SKSpriteNode(imageNamed: "trolley_front")
-        print("player created!")
         addChild(objectSprite!)
     }
     
@@ -49,8 +48,24 @@ class Player:SKNode {
             self.position.y += CGFloat(currentSpeed)
         case .down:
             objectSprite?.texture = SKTexture(imageNamed: "trolley_front")
-            self.position.x -= CGFloat(currentSpeed)
+            self.position.y -= CGFloat(currentSpeed)
         case .none: self.position = CGPoint(x: self.position.x, y: self.position.y)
         }
+    }
+    
+    func goUp() {
+        currentDirection = .up
+    }
+    
+    func goDown() {
+        currentDirection = .down
+    }
+    
+    func goLeft() {
+        currentDirection = .left
+    }
+    
+    func goRight() {
+        currentDirection = .right
     }
 }
