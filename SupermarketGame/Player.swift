@@ -32,6 +32,13 @@ class Player:SKNode {
         
         objectSprite = SKSpriteNode(imageNamed: "trolley_front")
         addChild(objectSprite!)
+        
+        let physicsBodySize = CGSize(width: objectSprite!.size.width, height: objectSprite!.size.height)
+        self.physicsBody = SKPhysicsBody(rectangleOf: physicsBodySize)
+        self.physicsBody!.friction = 0 // simulates roughness/smoothness of surface
+        self.physicsBody!.isDynamic = true // true keeps object within boundaries better
+        self.physicsBody!.restitution = 0 // bounciness when hitting boundaries
+        self.physicsBody!.allowsRotation = false // allows physics body to be rotated
     }
     
     public func update() {

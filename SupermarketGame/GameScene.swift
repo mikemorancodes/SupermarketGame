@@ -18,6 +18,9 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        view.showsPhysics = true
+        
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         supermarketWorld = childNode(withName: "supermarketWorld")
         playerLocation = supermarketWorld!.childNode(withName: "startingPoint")!.position
         
