@@ -35,6 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, XMLParserDelegate {
         
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
+        self.anchorPoint = CGPoint(x:0.5, y:0.5)
         
         self.enumerateChildNodes(withName: "*") {
             node, stop in
@@ -118,6 +119,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate, XMLParserDelegate {
         
     }
     
+    override func didSimulatePhysics() {
+        
+        self.centerOnNode(player!)
+    }
+    
+    func centerOnNode(_ node:SKNode) {
+        
+        let cameraPositionInScene:CGPoint = self.convert(node.position, from: supermarketWorld!)
+        supermarketWorld!.position = CGPoint(x: supermarketWorld!.position.x - cameraPositionInScene.x, y: supermarketWorld!.position.y - cameraPositionInScene.y)
+        
+    }
+    
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         
         let type:AnyObject? = attributeDict["type"] as AnyObject?
@@ -126,6 +139,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate, XMLParserDelegate {
             
             let newBoundary:Boundary = Boundary(attributeDict)
             supermarketWorld!.addChild(newBoundary)
+        }
+        else if (type as? String == "Portal") {
+            
+            let name:String = attributeDict["name"]!
+            
+            if (name == "StartingPoint") {
+                
+                let x:Int = Int(attributeDict["x"]!)!
+
+                let y:Int = Int(attributeDict["y"]!)!
+                
+                player!.position = CGPoint(x: x , y: y * -1)
+                playerLocation = player!.position
+                
+            }
+            
+            
         }
     }
     
