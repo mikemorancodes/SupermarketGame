@@ -25,7 +25,7 @@ enum BodyType:UInt32 {
 class GameScene: SKScene, SKPhysicsContactDelegate, XMLParserDelegate {
     
     var playerLocation:CGPoint = CGPoint(x:0,y:0)
-    var currentSpeed:Float = 2.0
+    var currentSpeed:Float = 3.0
     var supermarketWorld:SKNode?
     var player:Player?
     
